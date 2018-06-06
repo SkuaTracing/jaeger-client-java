@@ -180,6 +180,13 @@ public class Span implements io.opentracing.Span {
     }
 
     if (context.isSampled()) {
+      long parentID = context.getParentId();
+      if (parentID != 0) {
+        Skua.inject(context.getTraceId(), parentID);
+      } else {
+        Skua.inject(0, 0);
+      }
+
       tracer.reportSpan(this);
     }
   }

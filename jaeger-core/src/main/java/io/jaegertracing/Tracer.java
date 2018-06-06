@@ -425,6 +425,7 @@ public class Tracer implements io.opentracing.Tracer, Closeable {
               tags,
               references);
       if (context.isSampled()) {
+        Skua.inject(context.getTraceId(), context.getSpanId());
         metrics.spansStartedSampled.inc(1);
       } else {
         metrics.spansStartedNotSampled.inc(1);
