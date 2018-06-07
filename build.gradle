@@ -44,7 +44,7 @@ allprojects {
     apply plugin: 'idea' // intellij support
     apply plugin: 'jacoco'
 
-    group = 'io.jaegertracing'
+    group = 'org.skuatracing'
     version = getVersionForBuild()
 
     repositories {
@@ -60,6 +60,7 @@ subprojects {
     apply plugin: 'maven'
     apply plugin: 'signing'
     apply plugin: 'checkstyle'
+    apply plugin: 'maven-publish'
 
 
     compileJava {
