@@ -18,12 +18,15 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class Skua {
   private static final ThreadLocal<ByteBuffer> buf = new ThreadLocal<ByteBuffer>() {
     @Override
     protected ByteBuffer initialValue() {
-      return ByteBuffer.allocate(Long.SIZE / 8 * 2);
+      ByteBuffer buffer = ByteBuffer.allocate(Long.SIZE / 8 * 2);
+      buffer.order(ByteOrder.LITTLE_ENDIAN);
+      return buffer;
     }
   };
 
